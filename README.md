@@ -6,24 +6,13 @@ The idea is to create a cronjob to execute this application and send a notificat
 
 ## Setup
 
-Simply install the dependencies
+Simply install the dependencies:
 
 ```
 npm i
 ```
 
 ## Usage
-
-### Deployment
-
-Perform deployment with:
-
-```
-serverless deploy
-```
-
-* I didnt deploy it yet, so far I'm just testing locally.
-
 
 ### Local invocation
 
@@ -32,3 +21,8 @@ In order to test out the functions locally, you can invoke them with the followi
 ```
 npm run sls:local
 ```
+
+### Deployment
+
+TODO
+
