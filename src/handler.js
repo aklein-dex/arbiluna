@@ -2,6 +2,8 @@
 const axios = require('axios');
 const { LCDClient, Coin } = require('@terra-money/terra.js');
 
+// How to get these values?
+// Go to https://prismprotocol.app/swap and "inspect" the code and look at the request sent
 const PRISM_QUERY = {'simulation':{'offer_asset':{'amount':'1000000','info':{'cw20':'terra1dh9478k2qvqhqeajhn75a2a7dsnf74y5ukregw'}}}};
 const XPRISM_QUERY = {'simulate_swap_operations':{'offer_amount':'1000000','operations':[{'prism_swap':{'offer_asset_info':{'cw20':'terra1042wzrwg2uk6jqxjm34ysqquyr9esdgm5qyswz'},'ask_asset_info':{'cw20':'terra1dh9478k2qvqhqeajhn75a2a7dsnf74y5ukregw'}}},{'prism_swap':{'offer_asset_info':{'cw20':'terra1dh9478k2qvqhqeajhn75a2a7dsnf74y5ukregw'},'ask_asset_info':{'native':'uusd'}}}]}};
 const YLUNA_QUERY = {'simulate_swap_operations':{'offer_amount':'1000000','operations':[{'prism_swap':{'offer_asset_info':{'cw20':'terra17wkadg0tah554r35x6wvff0y5s7ve8npcjfuhz'},'ask_asset_info':{'cw20':'terra1dh9478k2qvqhqeajhn75a2a7dsnf74y5ukregw'}}},{'prism_swap':{'offer_asset_info':{'cw20':'terra1dh9478k2qvqhqeajhn75a2a7dsnf74y5ukregw'},'ask_asset_info':{'native':'uusd'}}}]}};
