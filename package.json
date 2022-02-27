@@ -1,0 +1,23 @@
+{
+  "name": "arbiluna",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sls:local": "node_modules/.bin/sls invoke local --function cronHandler",
+    "sls": "node_modules/.bin/sls"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^0.26.0",
+    "eslint": "^8.10.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "serverless": "^3.4.0"
+  },
+  "dependencies": {
+    "@terra-money/terra.js": "^3.0.7"
+  }
+}
