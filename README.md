@@ -16,7 +16,7 @@ npm i
 
 ### Local invocation
 
-In order to test out the functions locally, you can invoke them with the following command:
+In order to test out the function locally, you can invoke it with the following command:
 
 ```
 npm run sls:local

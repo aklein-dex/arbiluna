@@ -1,5 +1,5 @@
 'use strict';
-const axios = require('axios');
+// const axios = require('axios');
 const { LCDClient } = require('@terra-money/terra.js');
 
 // How to get these values?
@@ -39,10 +39,6 @@ module.exports.run = async (event, context) => {
     chainID: config.chainId,
   });
  
-  // LUNA
-  const exchangeRate = await terra.oracle.exchangeRate('uusd');
-  const lunaValue = exchangeRate.amount;
-  console.log(`LUNA:  ${lunaValue}`);
 
   // PRISM
   const prismResponse = await terra.wasm.contractQuery(config.contractPrism, PRISM_QUERY);
@@ -53,6 +49,11 @@ module.exports.run = async (event, context) => {
   const xprismResponse = await terra.wasm.contractQuery(config.contractOther, XPRISM_QUERY);
   const xprismValue = xprismResponse.amount/DECIMAL;
   console.log(`xPRISM: ${xprismValue}`);
+
+  // LUNA
+  const exchangeRate = await terra.oracle.exchangeRate('uusd');
+  const lunaValue = exchangeRate.amount;
+  console.log(`LUNA:  ${lunaValue}`);
 
   // yLUNA
   const ylunaResponse = await terra.wasm.contractQuery(config.contractOther, YLUNA_QUERY);
