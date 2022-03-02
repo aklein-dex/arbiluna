@@ -13,8 +13,6 @@ const prod = {
   chainId: 'columbus-5',
   contractPrism: 'terra19d2alknajcngdezrdhq40h6362k92kz23sz62u',
   contractOther: 'terra1yrc0zpwhuqezfnhdgvvh7vs5svqtgyl7pu3n6c',
-  cw20Prism: 'terra1dh9478k2qvqhqeajhn75a2a7dsnf74y5ukregw',
-  cw20Xprism: 'terra1042wzrwg2uk6jqxjm34ysqquyr9esdgm5qyswz',
 };
 
 // the addresses of tokens
@@ -41,19 +39,23 @@ function swapUstToPrism(amount) {
 }
 
 function swapUstToXprism(amount) {
-  return { simulate_swap_operations: { offer_amount: `${amount}`, operations: [ getOperation('xprism', 'prism'), getOperation('prism', 'UST')] }};
+  return swap(amount, [ getOperation('xprism', 'prism'), getOperation('prism', 'UST')]);
 }
 
 function swapUstToYluna(amount) {
-  return { simulate_swap_operations: { offer_amount: `${amount}`, operations: [ getOperation('yluna', 'prism'), getOperation('prism', 'UST')] }};
+  return swap(amount, [ getOperation('yluna', 'prism'), getOperation('prism', 'UST')]);
 }
 
 function swapUstToPluna(amount) {
-  return { simulate_swap_operations: { offer_amount: `${amount}`, operations: [ getOperation('pluna', 'prism'), getOperation('prism', 'UST')] }};
+  return swap(amount, [ getOperation('pluna', 'prism'), getOperation('prism', 'UST')]);
 }
 
 function swapUstToCluna(amount) {
-  return { simulate_swap_operations: { offer_amount: `${amount}`, operations: [ getOperation('cluna', 'prism'), getOperation('prism', 'UST')] }};
+  return swap(amount, [ getOperation('cluna', 'prism'), getOperation('prism', 'UST')]);
+}
+
+function swap(amount, operations) {
+  return { simulate_swap_operations: { offer_amount: `${amount}`, operations: operations }};
 }
 
 
@@ -75,13 +77,11 @@ module.exports.run = async (event, context) => {
  
 
   // PRISM
-  // const prismResponse = await terra.wasm.contractQuery(config.contractPrism, PRISM_QUERY);
   const prismResponse = await terra.wasm.contractQuery(config.contractPrism, swapUstToPrism(ONE_DOLLAR));
   const prismValue = prismResponse.return_amount/DECIMAL;
   console.log(`PRISM:  ${prismValue}`);
 
   // xPRISM
-  // const xprismResponse = await terra.wasm.contractQuery(config.contractOther, XPRISM_QUERY);
   const xprismResponse = await terra.wasm.contractQuery(config.contractOther, swapUstToXprism(ONE_DOLLAR));
   const xprismValue = xprismResponse.amount/DECIMAL;
   console.log(`xPRISM: ${xprismValue}`);
