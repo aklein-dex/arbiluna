@@ -1,4 +1,4 @@
-const { config } = require('../utils/config');
+const { prismConfig } = require('./prismConfig');
 const { terra } = require('../utils/terra');
 
 // Example of param to swap 1 xPRISM and get UST
@@ -31,8 +31,8 @@ const { terra } = require('../utils/terra');
 function getOperation(tokenOffer, tokenAsk) {
   return {
     prism_swap: { 
-      offer_asset_info: config.cw20.get(tokenOffer), 
-      ask_asset_info: config.cw20.get(tokenAsk)
+      offer_asset_info: prismConfig.cw20.get(tokenOffer), 
+      ask_asset_info: prismConfig.cw20.get(tokenAsk)
     }
   };
 }
@@ -60,6 +60,6 @@ module.exports.execute = async (amount, tokens) => {
     }
   };
   // console.log(JSON.stringify(param));
-  const response = await terra.wasm.contractQuery(config.contractSwap, param);
+  const response = await terra.wasm.contractQuery(prismConfig.contractSwap, param);
   return response.amount;
 }

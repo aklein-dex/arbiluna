@@ -1,4 +1,4 @@
-const { config } = require('../utils/config');
+const { prismConfig } = require('./prismConfig');
 const { terra } = require('../utils/terra');
 
 // Example of parameter to get PRISM value:
@@ -16,11 +16,11 @@ module.exports.execute = async (amount) => {
     simulation: { 
       offer_asset: { 
         amount: `${amount}`, 
-        info: config.cw20.get('prism')
+        info: prismConfig.cw20.get('prism')
       }
     }
   };
-
-  const response = await terra.wasm.contractQuery(config.contractPrism, param);
+console.log(JSON.stringify(param))
+  const response = await terra.wasm.contractQuery(prismConfig.contractPrism, param);
   return response.return_amount;
 }
