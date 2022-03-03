@@ -8,7 +8,7 @@ CW20.set('cluna', { cw20: 'terra13zaagrrrxj47qjwczsczujlvnnntde7fdt0mau'});
 CW20.set('ust', { native: 'uusd' });
 CW20.set('luna', { native: 'uluna' });
 
-module.exports.config = {
+module.exports.prismConfig = {
   contractPrism: 'terra19d2alknajcngdezrdhq40h6362k92kz23sz62u',
   contractSwap: 'terra1yrc0zpwhuqezfnhdgvvh7vs5svqtgyl7pu3n6c',
   cw20: CW20,
